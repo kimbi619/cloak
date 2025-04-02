@@ -45,7 +45,7 @@ const apiRequest = async (method, url, data = null, customHeaders = {}) => {
 export const keycloakAuth = async (username, password) => {
   const payload = {
     client_id: 'backend-service',
-    client_secret: 'oOcJKYNrVVVnYo8C3ugOrwcoofAC1hBx',
+    client_secret: 'uHONA3f1AI97id0PgG4YhGSmbESHyZOO',
     grant_type: 'password',
     username,
     password

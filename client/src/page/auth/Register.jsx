@@ -4,6 +4,10 @@ import { useState, useContext } from "react"
 import { Link, Navigate } from "react-router-dom"
 import "./Register.css"
 import { AuthContext } from "../../components/buttons/Buttons"
+import Github from '../../assets/icons/github.svg'
+import EyeOpen from '../../assets/icons/eye-open.svg'
+import EyeClose from '../../assets/icons/eye-close.svg'
+
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false)
@@ -56,20 +60,7 @@ export default function Register() {
 
         <div className="card-content">
           <button className="social-button">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-              <path d="M9 18c-4.51 2-5-2-7-2"></path>
-            </svg>
+            <img src={Github} alt="Github" className="social-icon" />
             Continue with Github
           </button>
 
@@ -130,37 +121,9 @@ export default function Register() {
                 />
                 <button type="button" className="toggle-password" onClick={togglePasswordVisibility}>
                   {showPassword ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
-                      <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
-                      <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
-                      <line x1="2" x2="22" y1="2" y2="22"></line>
-                    </svg>
+                    <img src={EyeOpen} alt="Show Password" className="eye-icon" />
                   ) : (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                      <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
+                    <img src={EyeClose} alt="Hide Password" className="eye-icon" />
                   )}
                 </button>
               </div>

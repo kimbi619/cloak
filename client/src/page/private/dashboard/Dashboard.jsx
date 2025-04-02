@@ -1,19 +1,33 @@
 "use client"
 
 import { useContext, useState } from "react"
-import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import "./Dashboard.css"
 
 export default function Dashboard() {
   const { user, logout } = useState({})
+  const navigate = useNavigate()
 
   
+  const handleLogout = () => {
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('user_info');
+    localStorage.removeItem('user');
+    
+    document.cookie = 'auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    
+
+    
+    navigate('/');
+    window.location.reload();
+  };
+
 
   return (
     <div className="dashboard-container">
      
 
-      <button className="logout-button" onClick={logout}>
+      <button className="logout-button" onClick={handleLogout}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"
