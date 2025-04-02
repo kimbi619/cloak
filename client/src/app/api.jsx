@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8080';
-
+const API_BASE_URL = process.env.REACT_APP_KEYCLOAK_API_BASE_URL || 'http://localhost:8080';
+const REALM = process.env.REACT_APP_KEYCLOAK_REALM || 'kloack';
+const CLIENT_ID = process.env.REACT_APP_KEYCLOAK_CLIENT_ID || 'backend-service';
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -44,8 +45,8 @@ const apiRequest = async (method, url, data = null, customHeaders = {}) => {
 
 export const keycloakAuth = async (username, password) => {
   const payload = {
-    client_id: 'backend-service',
-    client_secret: 'uHONA3f1AI97id0PgG4YhGSmbESHyZOO',
+    client_id: CLIENT_ID,
+    client_secret: process.env.REACT_APP_KEYCLOAK_CLIENT_SECRET || 'uHONA3f1AI97id0PgG4YhGSmbESHyZOO',
     grant_type: 'password',
     username,
     password
@@ -53,7 +54,7 @@ export const keycloakAuth = async (username, password) => {
   
   return apiRequest(
     'post',
-    '/realms/kloack/protocol/openid-connect/token',
+    `/realms/${CLIENT_ID}/protocol/openid-connect/token`,
     payload,
     { 'Content-Type': 'application/x-www-form-urlencoded' }
   );
